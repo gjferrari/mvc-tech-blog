@@ -48,7 +48,7 @@ Comment.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "feeling",
+    modelName: "comment",
   }
 );
 
