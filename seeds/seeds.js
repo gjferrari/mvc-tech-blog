@@ -3,8 +3,21 @@ const sequelize = require("../config/connection");
 const { User, Post, Comment } = require("../models");
 
 const userData = require("./userData.JSON");
-// const postData = require("./postData.JSON");
-const commentData = require("./commentData.JSON");
+// const postData = require("./postData.json");
+// const commentData = require("./commentData.JSON");
+
+// const commentData = [
+//   {
+//     content: "Me too! Can't get enough of it!",
+//     post_id: "0",
+//   },
+//   {
+//     content: "I don't like your tone, sir",
+//     post_id: "1",
+//   },
+// ];
+
+console.log("Hello", commentData);
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
