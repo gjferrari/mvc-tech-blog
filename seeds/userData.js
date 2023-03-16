@@ -1,4 +1,4 @@
-[
+module.exports = [
     {
       "name": "Sal",
       "email": "sal@hotmail.com",

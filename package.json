@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed": "node seeds/seeds.js"
+    "seed": "node seeds/seed.js"
   },
   "author": "Genevieve Ferrari",
   "license": "MIT",
@@ -18,8 +18,8 @@
     "express": "^4.18.2",
     "express-handlebars": "^5.3.5",
     "express-session": "^1.17.3",
-    "mysql2": "^2.2.5",
-    "sequelize": "^6.3.5"
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.29.3"
   },
   "devDependencies": {
     "eslint": "^8.32.0",
