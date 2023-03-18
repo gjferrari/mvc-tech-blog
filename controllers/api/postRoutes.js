@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { User, Comment, Post } = require("../../models");
-// const withAuth = require('../../utils/auth');
-
+const withAuth = require("../../utils/auth");
+// on line 5 means /api/posts/
 router.post("/", withAuth, async (req, res) => {
   try {
     const newPost = await postMessage.create({

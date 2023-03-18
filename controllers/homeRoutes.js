@@ -1,6 +1,9 @@
+//this is what connects to handlebar!!!
+//THIS IS RENDERING ONLY!!!
+
 const router = require("express").Router();
 const { Post, User, Comment } = require("../models");
-// const withAuth = require("../utils/auth");
+const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
@@ -15,22 +18,22 @@ router.get("/", async (req, res) => {
     });
 
     // Serialize data so the template can read it
-    const post = postData.map((post) => post.get({ plain: true }));
+    const posts = postData.map((post) => post.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    // res.render("homepage", {
-    //   projects,
-    //   logged_in: req.session.logged_in,
-    // });
-    res.json(post);
+    res.render("homepage", {
+      posts,
+      logged_in: req.session.logged_in,
+    });
+    // res.json(post);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.get("/project/:id", async (req, res) => {
+router.get("/post/:id", async (req, res) => {
   try {
-    const projectData = await Project.findByPk(req.params.id, {
+    const postData = await Post.findByPk(req.params.id, {
       include: [
         {
           model: User,
@@ -39,10 +42,10 @@ router.get("/project/:id", async (req, res) => {
       ],
     });
 
-    const project = projectData.get({ plain: true });
+    const post = postData.get({ plain: true });
 
-    res.render("project", {
-      ...project,
+    res.render("singlePost", {
+      post,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
