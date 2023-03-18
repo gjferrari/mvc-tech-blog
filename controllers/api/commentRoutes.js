@@ -2,6 +2,17 @@ const router = require("express").Router();
 const { User, Comment, Post } = require("../../models");
 const withAuth = require("../../utils/auth");
 
+//is commentData the right name?
+
+router.get("/", withAuth, (req, res) => {
+  Comment.findAll()
+    .then((commentData) => res.json(commentData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 router.post("/", withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({
@@ -16,32 +27,6 @@ router.post("/", withAuth, async (req, res) => {
 });
 
 // not necessary to have separate get routes
-
-// router.get("/", (req, res) => {
-//   Comment.findAll({
-//     // attributes: ["id", "content", "date_created"],
-//     // order: [["date_created", "DESC"]],
-//     include: [
-//       {
-//         model: User,
-//         attributes: ["name"],
-//       },
-//       {
-//         model: Post,
-//         // attributes: ["id", "title", "content", "user_id", "date_created"],
-//         include: {
-//           model: User,
-//           attributes: ["name"],
-//         },
-//       },
-//     ],
-//   })
-//     .then((commentData) => res.json(commentData))
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
 
 // router.get("/:id", (req, res) => {
 //   Comment.findOne({
