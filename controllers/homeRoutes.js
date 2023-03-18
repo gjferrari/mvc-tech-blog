@@ -42,10 +42,10 @@ router.get("/post/:id", async (req, res) => {
       ],
     });
 
-    const post = postData.get({ plain: true });
+    const posts = postData.get({ plain: true });
 
     res.render("singlePost", {
-      post,
+      posts,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
