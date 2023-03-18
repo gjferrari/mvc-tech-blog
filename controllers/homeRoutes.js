@@ -56,4 +56,14 @@ router.get("/edit/:id", async (req, res) => {
   }
 });
 
+//rending the logging page
+router.get("/login", (req, res) => {
+  res.render("login");
+});
+
+//rending dashboard
+router.get("/dashboard", (req, res) => {
+  res.render("dashboard");
+});
+
 module.exports = router;
