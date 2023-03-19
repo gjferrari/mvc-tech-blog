@@ -15,6 +15,8 @@
   </div>
     <img src="/images/homepage_bob.png" alt="Emotional support Bob" height="100px" >
 </nav>
+
+
 <section>
     <h2>Create New Post</h2>
     
@@ -24,8 +26,8 @@
             <input type="text" id="post-title" name="post-title"/>
         </div>
         <div>
-            <label for="content">Content</label>
-            <textarea id="content" name="content"></textarea>
+            <label for="post-content">Content</label>
+            <textarea id="post-content" name="post-content"></textarea>
         </div>
         <button type="submit" class="btn">Create</button>
     </form>
@@ -33,15 +35,21 @@
 {{#if posts.length}}
 <section>
     <h2>Your Posts</h2>
-    <ol>
-        {{#each posts as |post|}}
+    <ul>
+      <ul>
+      {{#each posts as |post|}}
         <li>
-            {{!-- {{> post-info post}} --}}
-            <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit Post</a>
+          <a href="/edit/{{post.id}}" class="edit-link">Edit Post</a>
+          <h3>{{post.title}}</h3>
+          <p>{{post.content}}</p>
         </li>
-        {{/each}}
-    </ol>
+      {{/each}}
+    </ul>
+    </ul>
 </section>
 {{/if}}
 
-<script src="./../public/js/new-post.js"></script>
+
+
+<script src="/js/new-post.js"></script>
+<script src="./../public/js/login.js"></script>
