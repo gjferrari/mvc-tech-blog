@@ -3,7 +3,7 @@ const { User } = require("../../models");
 
 //USER ROUTE CONTROLS THE SESSION
 
-router.post("/login", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const userData = await User.create(req.body);
 
