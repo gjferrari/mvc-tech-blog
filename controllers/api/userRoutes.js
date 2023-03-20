@@ -3,7 +3,18 @@ const { User } = require("../../models");
 
 //USER ROUTE CONTROLS THE SESSION
 
-router.post("/", async (req, res) => {
+router.get("/:id", (req, res) => {
+  User.findByPk(req.params.id, { include: [Post, Comment] })
+    .then((userData) => {
+      res.json(userData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ msg: "an error occured", err });
+    });
+});
+
+router.post("/signup", async (req, res) => {
   try {
     const userData = await User.create(req.body);
 
