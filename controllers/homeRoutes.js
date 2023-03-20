@@ -12,7 +12,6 @@ router.get("/", async (req, res) => {
       include: [
         {
           model: User,
-          //   attributes: ['name'],
         },
       ],
     });
@@ -56,14 +55,23 @@ router.get("/edit/:id", async (req, res) => {
   }
 });
 
+//newPost
+
 //rending the logging page
 router.get("/login", (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect("/dashboard");
+    return;
+  }
   res.render("login");
 });
 
 //rending dashboard
-router.get("/dashboard", (req, res) => {
-  if (req.session.logged_in) return res.redirect("dashboard");
-});
+// router.get("/dashboard", (req, res) => {
+//   if (req.session.logged_in) return res.redirect("dashboard");
+// });
 
+router.get("/logout", (req, res) => {
+  res.render("homepage");
+});
 module.exports = router;

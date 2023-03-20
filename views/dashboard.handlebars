@@ -20,8 +20,6 @@
       </li>
     </ul>
   </div>
-    <img src="/images/homepage_bob.png" alt="Emotional support Bob" height="100px" >
-</nav>
 <div class="row">
   <div class="col-auto">
     <h2>Welcome, {{name}}!</h2>
@@ -50,9 +48,12 @@
       <ul>
       {{#each posts as |post|}}
         <li>
+          {{!-- <a href="/edit/{{post.id}}" class="edit-link">Edit Post</a> --}}
+          <li>
           <a href="/edit/{{post.id}}" class="edit-link">Edit Post</a>
           <h3>{{post.title}}</h3>
           <p>{{post.content}}</p>
+        </li>
         </li>
       {{/each}}
     </ul>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark">
+{{!-- <nav class="navbar navbar-expand-lg navbar-dark">
   <a class="navbar-brand" href="/activities">View Activities</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -14,7 +14,7 @@
     </ul>
   </div>
     <img src="/images/homepage_bob.png" alt="Emotional support Bob" height="100px" >
-</nav>
+</nav> --}}
 
 
 <section>
@@ -34,12 +34,11 @@
 </section>
 {{#if posts.length}}
 <section>
-    <h2>Your Posts</h2>
+    <h2> Posts</h2>
     <ul>
       <ul>
       {{#each posts as |post|}}
         <li>
-          <a href="/edit/{{post.id}}" class="edit-link">Edit Post</a>
           <h3>{{post.title}}</h3>
           <p>{{post.content}}</p>
         </li>
