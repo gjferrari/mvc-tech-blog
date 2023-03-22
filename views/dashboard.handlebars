@@ -25,7 +25,6 @@
     <h2>Welcome, {{name}}!</h2>
   </div>
 </div>
-
 <section>
     <h2>Create New Post</h2>
     
@@ -41,6 +40,20 @@
         <button type="submit" class="btn">Create</button>
     </form>
 </section>
+{{#if posts.length}}
+  <section>
+    <h2>Your Posts</h2>
+    <ul>
+      {{#each posts as |post|}}
+        <li>
+          <a href="/edit/{{post.id}}" class="edit-link">Edit Post</a>
+          <h3>{{post.title}}</h3>
+          <p>{{post.content}}</p>
+        </li>
+      {{/each}}
+    </ul>
+  </section>
+{{/if}}
 {{#if posts.length}}
 <section>
     <h2>Your Posts</h2>
