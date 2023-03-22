@@ -1,10 +1,10 @@
-const newFormHandler = async (event) => {
+const editFormHandler = async (event) => {
   event.preventDefault();
 
-  const title = document.querySelector('input[name="content"]').value;
+  const title = document.querySelector('input[name="post-title"]').value;
   const content = document.querySelector('textarea[name="content"]').value;
-  const id = document.querySelector("post_id").getAttribute("id");
-//declaring id to get post by id 
+  const id = document.querySelector(".post_id").getAttribute("id");
+  //declaring id to get post by id
 
   const response = await fetch(`/api/posts/${id}`, {
     method: "PUT",
@@ -20,10 +20,10 @@ const newFormHandler = async (event) => {
   if (response.ok) {
     document.location.replace("/");
   } else {
-    alert(response.statusText);
+    console.log(response);
   }
 };
 
 document
-  .querySelector(".new-post-form")
-  .addEventListener("submit", newFormHandler);
+  .querySelector(".edit-post-form")
+  .addEventListener("submit", editFormHandler);

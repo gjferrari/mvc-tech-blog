@@ -3,6 +3,7 @@ const { Post, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", (req, res) => {
+  console.log("edit post");
   Post.findAll({
     where: {
       user_id: req.session.user_id,
@@ -41,24 +42,31 @@ router.get("/edit/:id", withAuth, (req, res) => {
   Post.findByPk(req.params.id, {
     attributes: ["id", "content", "title", "date_created"],
     include: [
+      User,
       {
         model: Comment,
-        attributes: ["id", "content", "post_id", "user_id", "date_created"],
-        include: {
-          model: User,
-          attributes: ["name"],
-        },
+        include: [User],
       },
-      {
-        model: User,
-        attributes: ["name"],
-      },
+
+      // {
+      //   model: Comment,
+      //   attributes: ["id", "content", "post_id", "user_id", "date_created"],
+      //   include: {
+      //     model: User,
+      //     attributes: ["name"],
+      //   },
+      // },
+      // {
+      //   model: User,
+      //   attributes: ["name"],
+      // },
     ],
   })
     .then((postData) => {
+      console.log(postData);
       if (postData) {
         const post = postData.get({ plain: true });
-
+        console.log(post);
         res.render("edit-post", {
           post,
           loggedIn: true,

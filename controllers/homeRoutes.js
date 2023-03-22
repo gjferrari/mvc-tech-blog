@@ -61,10 +61,10 @@ router.get("/edit/:id", async (req, res) => {
       ],
     });
 
-    const posts = postData.get({ plain: true });
-
+    const post = postData.get({ plain: true });
+    console.log(post);
     res.render("edit-post", {
-      posts,
+      post,
       logged_in: req.session.logged_in,
     });
   } catch (err) {

@@ -4,7 +4,7 @@ const withAuth = require("../../utils/auth");
 // on line 5 means /api/posts/
 router.post("/", withAuth, async (req, res) => {
   try {
-    const newPost = await postMessage.create({
+    const newPost = await Post.create({
       ...req.body,
       user_id: req.session.user_id,
     });
@@ -58,6 +58,19 @@ router.get("/:id", (req, res) => {
         },
       },
     ],
+  })
+    .then((postData) => res.json(postData))
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
+//edit
+router.put("/:id", (req, res) => {
+  Post.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
   })
     .then((postData) => res.json(postData))
     .catch((err) => {
