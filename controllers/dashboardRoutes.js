@@ -38,47 +38,71 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/edit/:id", withAuth, (req, res) => {
-  Post.findByPk(req.params.id, {
-    attributes: ["id", "content", "title", "date_created"],
-    include: [
-      User,
-      {
-        model: Comment,
-        include: [User],
-      },
-
-      // {
-      //   model: Comment,
-      //   attributes: ["id", "content", "post_id", "user_id", "date_created"],
-      //   include: {
-      //     model: User,
-      //     attributes: ["name"],
-      //   },
-      // },
-      // {
-      //   model: User,
-      //   attributes: ["name"],
-      // },
-    ],
-  })
-    .then((postData) => {
-      console.log(postData);
-      if (postData) {
-        const post = postData.get({ plain: true });
-        console.log(post);
-        res.render("edit-post", {
-          post,
-          loggedIn: true,
-          username: req.session.name,
-        });
-      } else {
-        res.status(404).end();
-      }
-    })
-    .catch((err) => {
-      res.status(500).json(err);
+router.get("/edit/:id", async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ["name"],
+        },
+        {
+          model: Comment,
+        },
+      ],
     });
+
+    const post = postData.get({ plain: true });
+    console.log(post);
+    res.render("edit-post", {
+      post,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
+// router.get("/edit/:id", withAuth, (req, res) => {
+//   Post.findByPk(req.params.id, {
+//     attributes: ["id", "content", "title", "date_created"],
+//     include: [
+//       User,
+//       {
+//         model: Comment,
+//         include: [User],
+//       },
+
+//       // {
+//       //   model: Comment,
+//       //   attributes: ["id", "content", "post_id", "user_id", "date_created"],
+//       //   include: {
+//       //     model: User,
+//       //     attributes: ["name"],
+//       //   },
+//       // },
+//       // {
+//       //   model: User,
+//       //   attributes: ["name"],
+//       // },
+//     ],
+//   })
+//     .then((postData) => {
+//       console.log(postData);
+//       if (postData) {
+//         const post = postData.get({ plain: true });
+//         console.log(post);
+//         res.render("edit-post", {
+//           post,
+//           loggedIn: true,
+//           username: req.session.name,
+//         });
+//       } else {
+//         res.status(404).end();
+//       }
+//     })
+//     .catch((err) => {
+//       res.status(500).json(err);
+//     });
+// });
 
 module.exports = router;
