@@ -3,7 +3,7 @@
     <h2>Welcome, {{name}}!</h2>
   </div>
 </div>
-<section>
+<section id="post-card">
     <h2>Create New Post</h2>
     
     <form class="new-post-form">
@@ -19,9 +19,9 @@
     </form>
 </section>
 {{#if posts.length}}
-  <section>
+  <section id="post-card">
     <h2>Your Posts</h2>
-    <ul>
+    <section id="small-post">
       {{#each posts as |post|}}
       {{!-- <p>You posted on {{moment post.date_created fromat="MM-DD-YYYY"}}</p>
         <li> --}}
@@ -30,7 +30,7 @@
           <p>{{post.content}}</p>
         </li>
       {{/each}}
-    </ul>
+    </section>
   </section>
 {{/if}}
 

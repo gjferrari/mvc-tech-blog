@@ -1,18 +1,18 @@
 
 {{#if posts.length}}
-<section>
+<section id="main-cards">
     <h2> Posts</h2>
     <ul>
-      <ul>
+      <section id="post-card">
       {{#each posts as |post|}}
-        <li>
+        <section id="small-post">
           <h3>{{post.user.name}}</h3>
           <h3>{{post.title}}</h3>
           <p>{{post.content}}</p>
           <a href="/comments/post/{{post.id}}" class="comment-link">Comment</a>
-        </li>
+        </section>
       {{/each}}
-    </ul>
+    </section>
 </section>
 {{/if}}
 

@@ -1,5 +1,19 @@
-header, .project:not(:last-child) {
+header,
+.project:not(:last-child) {
   border-bottom: 1px solid #ccc;
+}
+
+input[type="text"] {
+  width: 200px;
+}
+
+:root {
+  --dark-blue: rgba(21, 34, 54);
+  --light-blue: rgba(185, 203, 217);
+  --dark-pink: rgba(252, 201, 197);
+  --light-pink: rgba(254, 221, 216);
+  --neutral: rgba(234, 231, 226);
+  --greenish: rgba(207, 227, 226);
 }
 
 .no-button {
@@ -17,8 +31,41 @@ header, .project:not(:last-child) {
   text-decoration: underline;
 }
 
-.dollar-amount {
+/* .dollar-amount {
   color: #056605;
   font-weight: bold;
   margin-left: -5px;
+} */
+
+/* #your-posts-card {
+  margin: 10px;
+  padding: 10px;
+  border: #065b83;
+  border-style: solid;
+  border-width: 3px;
+  background-color: antiquewhite;
+} */
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgb(220, 238, 145);
 }
+#post-card {
+  margin: 10px;
+  padding: 10px;
+  border: #065b83;
+  border-style: solid;
+  border-width: 3px;
+  background-color: var(--greenish);
+}
+
+#small-post {
+  margin: 10px;
+  padding: 10px;
+  border: #065b83;
+  border-style: solid;
+  border-width: 3px;
+  background-color: var(--light-pink);
+}
+/* #your-posts-card {
+  background-color: antiquewhite;
+} */

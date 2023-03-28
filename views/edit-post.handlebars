@@ -1,14 +1,14 @@
 <article>
-    <a href="/">&larr; Back to Dashboard</a>
+    <a href="/dashboard">&larr; Back to Dashboard</a>
     <h2>Edit Post</h2>
     <form class="edit-post-form">
         <div>
             {{!-- <input id="hiddenPostId" hidden="true" value="{{post.id}}"></input>
             <input id="hiddenPostName" hidden="true" value="{{post.user.name}}"></input> --}}
-            <input type="text" name="post-title" value="{{post.title}}" />
+            <input type="text" name="post-title" style="width: 200px;" value="{{post.title}}" />
             <p>{{post.title}}</p>
             <br><br>
-            <textarea id="content" name="content"></textarea>
+            <textarea id="content" name="content" rows="5" cols="40" value="{{post.content}}"></textarea> </textarea>
             <p>{{post.content}}</p>
         </div>
         <div>
