@@ -1,20 +1,21 @@
-const newFormHandler = async (event) => {
+const deleteFormHandler = async (event) => {
   event.preventDefault();
 
-  const title = document.querySelector('input[name="content"]').value;
-  const content = document.querySelector('textarea[name="content"]').value;
-  const id = document.querySelector("post_id").getAttribute("id");
+  // const title = document.querySelector('input[name="post-title"]').value;
+  // const content = document.querySelector('textarea[name="content"]').value;
+  const id = document.querySelector(".post_id").getAttribute("id");
   //declaring id to get post by id
 
   const response = await fetch(`/api/posts/${id}`, {
     method: "DELETE",
-    body: JSON.stringify({
-      title,
-      content,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
+    // body: JSON.stringify({
+    //   id,
+    //   title,
+    //   content,
+    // }),
+    // headers: {
+    //   "Content-Type": "application/json",
+    // },
   });
 
   if (response.ok) {
@@ -25,5 +26,5 @@ const newFormHandler = async (event) => {
 };
 
 document
-  .querySelector(".delete-button")
-  .addEventListener("submit", newFormHandler);
+  .querySelector(".delete-post-btn")
+  .addEventListener("click", deleteFormHandler);
