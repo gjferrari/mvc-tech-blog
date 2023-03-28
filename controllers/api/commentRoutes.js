@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Comment, Post } = require("../../models");
+const { Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 //is commentData the right name?
@@ -13,7 +13,7 @@ router.get("/", withAuth, (req, res) => {
     });
 });
 
-router.post("/", withAuth, async (req, res) => {
+router.post("/post/:id", withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({
       ...req.body,

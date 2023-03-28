@@ -41,6 +41,7 @@
         <li>
           <h3>{{post.title}}</h3>
           <p>{{post.content}}</p>
+          <a href="/comments/post/{{post.id}}" class="comment-link">Comment</a>
         </li>
       {{/each}}
     </ul>
@@ -51,3 +52,4 @@
 
 <script src="/js/new-post.js"></script>
 <script src="/js/login.js"></script>
+<script src="/js/comment.js"></script>
