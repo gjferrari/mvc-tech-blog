@@ -24,5 +24,5 @@ const newCommentHandler = async (event) => {
 };
 
 document
-  .querySelector(".comment-form")
-  .addEventListener("submit", newCommentHandler);
+  .querySelector("#save-comment")
+  .addEventListener("click", newCommentHandler);

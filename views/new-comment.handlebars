@@ -1,21 +1,16 @@
 <article>
     <a href="/">&larr; Back to Homepage</a>
     <h2>Add Comment</h2>
-    <form class="edit-post-form">
+    <form class="comment-form">
         <div>
-            {{!-- <input id="hiddenPostId" hidden="true" value="{{post.id}}"></input>
-            <input id="hiddenPostName" hidden="true" value="{{post.user.name}}"></input> --}}
-            <input type="text" name="post-title" value="{{post.title}}" />
-            <p>{{post.title}}</p>
-            <br><br>
-            <textarea id="content" name="content"></textarea>
+            <textarea id="content" name="comment-content"></textarea>
             <p>{{post.content}}</p>
         </div>
         <div>
             <a id="{{post.id}}" class="post_id" href="/post/{{post.id}}"></a>
         </div>
-        <button type="submit">Save Post</button>
-        <button type="click" class="delete-post-btn">Delete post</button>
+        <button type="click" class="save-comment">Save Comment</button>
+        <button type="click" class="delete-comment">Delete Comment</button>
     </form>
 </article>
 
