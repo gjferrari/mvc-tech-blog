@@ -39,6 +39,7 @@
       <ul>
       {{#each posts as |post|}}
         <li>
+          <h3>{{post.user.name}}</h3>
           <h3>{{post.title}}</h3>
           <p>{{post.content}}</p>
           <a href="/comments/post/{{post.id}}" class="comment-link">Comment</a>
